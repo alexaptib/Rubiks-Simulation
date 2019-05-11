@@ -57,5 +57,5 @@ docs/_build/
 # PyBuilder
 target/
 
-#VSCode Folder
-.vscode/
+#vscode
+.vscode
