@@ -12,9 +12,49 @@ class Cube:
                 self.cube[face].append(self.order[face])
                 square += 1
             face += 1
-        self.neighbors = [[][][][][][]]
+        self.neighbors = []
+        self.neighbors.append(["B", "R", "G", "O"])
+        self.neighbors.append(["B", "O", "G", "R"])
+        self.neighbors.append(["W", "O", "Y", "R"])
+        self.neighbors.append(["W", "R", "Y", "O"])
+        self.neighbors.append(["W", "B", "Y", "G"])
+        self.neighbors.append(["W", "G", "Y", "B"])
 
-        
+    def rotate(self, move):
+        if len(move) == 1:
+            face = self.order.index(move)
+            self.cube[face].insert(0, self.cube[face][-2])
+            self.cube[face].insert(1, self.cube[face][-1])
+            del self.cube[face][-1]
+            del self.cube[face][-2]
+            #if move[0] == "W" or move[0] == "Y":
 
+            #else:
+                #for i in 20:
+
+            self.neighbors[face]
+        #elif move[1] == "2":
+            
+       # elif move[1] == "'":
+
+
+    def printCube(self):
+        for face in self.cube:
+            line = 0
+            while line < 3:
+                if line == 0:
+                    line0 = face[0] + face[1] + face[2]
+                elif line == 1:
+                    line1 = face[7] + self.order[self.cube.index(face)] + face[3]
+                else:
+                    line2 = face[6] + face[5] + face[4]
+                line += 1
+            print(line0[0] + " | " + line0[1] + " | " + line0[2])
+            print("---------")
+            print(line1[0] + " | " + line1[1] + " | " + line1[2])
+            print("---------")
+            print(line2[0] + " | " + line2[1] + " | " + line2[2])
+            print()
+            print()
 
         
