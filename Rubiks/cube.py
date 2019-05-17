@@ -22,34 +22,34 @@ class Cube:
 
     def rotate(self, move):
         if len(move) == 1:
-            face = self.order.index(move)
+            face = self.order.index(move[0])
             self.cube[face].insert(0, self.cube[face][-2])
             self.cube[face].insert(1, self.cube[face][-1])
             del self.cube[face][-1]
             del self.cube[face][-2]
             neighborsToSet = []
             if move == "W":
-                for neighbor in self.neighbors[self.order.index(move)]:
+                for neighbor in self.neighbors[face]:
                     neighborsToSet.append([self.cube[self.order.index(neighbor)][0], self.cube[self.order.index(neighbor)][1], self.cube[self.order.index(neighbor)][2]])
                 neighborsToSet.insert(0, neighborsToSet[-1])
                 del neighborsToSet[-1]
-                for neighbor in self.neighbors[self.order.index(move)]:
-                    self.cube[self.order.index(neighbor)][0] = neighborsToSet[self.neighbors[self.order.index(move)].index(neighbor)][0]
-                    self.cube[self.order.index(neighbor)][1] = neighborsToSet[self.neighbors[self.order.index(move)].index(neighbor)][1]
-                    self.cube[self.order.index(neighbor)][2] = neighborsToSet[self.neighbors[self.order.index(move)].index(neighbor)][2]
+                for neighbor in self.neighbors[face]:
+                    self.cube[self.order.index(neighbor)][0] = neighborsToSet[self.neighbors[face].index(neighbor)][0]
+                    self.cube[self.order.index(neighbor)][1] = neighborsToSet[self.neighbors[face].index(neighbor)][1]
+                    self.cube[self.order.index(neighbor)][2] = neighborsToSet[self.neighbors[face].index(neighbor)][2]
 
             elif move == "Y":
-                for neighbor in self.neighbors[self.order.index(move)]:
+                for neighbor in self.neighbors[face]:
                     neighborsToSet.append([self.cube[self.order.index(neighbor)][6], self.cube[self.order.index(neighbor)][5], self.cube[self.order.index(neighbor)][4]])
                 neighborsToSet.insert(0, neighborsToSet[-1])
                 del neighborsToSet[-1]
-                for neighbor in self.neighbors[self.order.index(move)]:
-                    self.cube[self.order.index(neighbor)][6] = neighborsToSet[self.neighbors[self.order.index(move)].index(neighbor)][0]
-                    self.cube[self.order.index(neighbor)][5] = neighborsToSet[self.neighbors[self.order.index(move)].index(neighbor)][1]
-                    self.cube[self.order.index(neighbor)][4] = neighborsToSet[self.neighbors[self.order.index(move)].index(neighbor)][2]
+                for neighbor in self.neighbors[face]:
+                    self.cube[self.order.index(neighbor)][6] = neighborsToSet[self.neighbors[face].index(neighbor)][0]
+                    self.cube[self.order.index(neighbor)][5] = neighborsToSet[self.neighbors[face].index(neighbor)][1]
+                    self.cube[self.order.index(neighbor)][4] = neighborsToSet[self.neighbors[face].index(neighbor)][2]
 
-            elif move == "B":
-                for neighbor in self.neighbors[self.order.index(move)]:
+            elif move[0] == "B":
+                for neighbor in self.neighbors[face]:
                     if neighbor == "W":
                         neighborsToSet.append([self.cube[self.order.index(neighbor)][0], self.cube[self.order.index(neighbor)][1], self.cube[self.order.index(neighbor)][2]])
                     elif neighbor == "Y":
@@ -62,21 +62,53 @@ class Cube:
                 del neighborsToSet[-1]
                 print(neighborsToSet)
 
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][0])][0] = neighborsToSet[0][0]
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][0])][1] = neighborsToSet[0][1]
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][0])][2] = neighborsToSet[0][2]
+                self.cube[self.order.index(self.neighbors[face][0])][2] = neighborsToSet[0][0]
+                self.cube[self.order.index(self.neighbors[face][0])][1] = neighborsToSet[0][1]
+                self.cube[self.order.index(self.neighbors[face][0])][0] = neighborsToSet[0][2]
 
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][1])][0] = neighborsToSet[1][0]
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][1])][7] = neighborsToSet[1][1]
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][1])][6] = neighborsToSet[1][2]
+                self.cube[self.order.index(self.neighbors[face][1])][0] = neighborsToSet[1][0]
+                self.cube[self.order.index(self.neighbors[face][1])][7] = neighborsToSet[1][1]
+                self.cube[self.order.index(self.neighbors[face][1])][6] = neighborsToSet[1][2]
 
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][2])][6] = neighborsToSet[2][0]
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][2])][5] = neighborsToSet[2][1]
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][2])][4] = neighborsToSet[2][2]
+                self.cube[self.order.index(self.neighbors[face][2])][6] = neighborsToSet[2][0]
+                self.cube[self.order.index(self.neighbors[face][2])][5] = neighborsToSet[2][1]
+                self.cube[self.order.index(self.neighbors[face][2])][4] = neighborsToSet[2][2]
 
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][3])][4] = neighborsToSet[3][0]
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][3])][3] = neighborsToSet[3][1]
-                self.cube[self.order.index(self.neighbors[self.order.index(move)][3])][2] = neighborsToSet[3][2]
+                self.cube[self.order.index(self.neighbors[face][3])][4] = neighborsToSet[3][0]
+                self.cube[self.order.index(self.neighbors[face][3])][3] = neighborsToSet[3][1]
+                self.cube[self.order.index(self.neighbors[face][3])][2] = neighborsToSet[3][2]
+            
+            elif move[0] == "G":
+                for neighbor in self.neighbors[face]:
+                    if neighbor == "W":
+                        neighborsToSet.append([self.cube[self.order.index(neighbor)][0], self.cube[self.order.index(neighbor)][1], self.cube[self.order.index(neighbor)][2]])
+                    elif neighbor == "Y":
+                        neighborsToSet.append([self.cube[self.order.index(neighbor)][6], self.cube[self.order.index(neighbor)][5], self.cube[self.order.index(neighbor)][4]])
+                    elif neighbor == "R":
+                        neighborsToSet.append([self.cube[self.order.index(neighbor)][4], self.cube[self.order.index(neighbor)][3], self.cube[self.order.index(neighbor)][2]])
+                    elif neighbor == "O":
+                        neighborsToSet.append([self.cube[self.order.index(neighbor)][0], self.cube[self.order.index(neighbor)][7], self.cube[self.order.index(neighbor)][6]])
+                neighborsToSet.insert(0, neighborsToSet[-1])
+                del neighborsToSet[-1]
+                print(neighborsToSet)
+
+                self.cube[self.order.index(self.neighbors[face][0])][2] = neighborsToSet[0][0]
+                self.cube[self.order.index(self.neighbors[face][0])][1] = neighborsToSet[0][1]
+                self.cube[self.order.index(self.neighbors[face][0])][0] = neighborsToSet[0][2]
+
+                self.cube[self.order.index(self.neighbors[face][1])][0] = neighborsToSet[1][0]
+                self.cube[self.order.index(self.neighbors[face][1])][7] = neighborsToSet[1][1]
+                self.cube[self.order.index(self.neighbors[face][1])][6] = neighborsToSet[1][2]
+
+                self.cube[self.order.index(self.neighbors[face][2])][2] = neighborsToSet[2][0]
+                self.cube[self.order.index(self.neighbors[face][2])][1] = neighborsToSet[2][1]
+                self.cube[self.order.index(self.neighbors[face][2])][0] = neighborsToSet[2][2]
+
+                self.cube[self.order.index(self.neighbors[face][3])][4] = neighborsToSet[3][0]
+                self.cube[self.order.index(self.neighbors[face][3])][3] = neighborsToSet[3][1]
+                self.cube[self.order.index(self.neighbors[face][3])][2] = neighborsToSet[3][2]
+
+
         #elif move[1] == "2":
             
         #elif move[1] == "'":
