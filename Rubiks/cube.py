@@ -79,6 +79,7 @@ class Cube:
                 self.cube[self.order.index(self.neighbors[face][3])][2] = neighborsToSet[3][2]
             
             elif move[0] == "G":
+                print(neighborsToSet)
                 for neighbor in self.neighbors[face]:
                     if neighbor == "W":
                         neighborsToSet.append([self.cube[self.order.index(neighbor)][0], self.cube[self.order.index(neighbor)][1], self.cube[self.order.index(neighbor)][2]])
@@ -88,13 +89,14 @@ class Cube:
                         neighborsToSet.append([self.cube[self.order.index(neighbor)][4], self.cube[self.order.index(neighbor)][3], self.cube[self.order.index(neighbor)][2]])
                     elif neighbor == "O":
                         neighborsToSet.append([self.cube[self.order.index(neighbor)][0], self.cube[self.order.index(neighbor)][7], self.cube[self.order.index(neighbor)][6]])
+                print(neighborsToSet)
                 neighborsToSet.insert(0, neighborsToSet[-1])
                 del neighborsToSet[-1]
                 print(neighborsToSet)
 
-                self.cube[self.order.index(self.neighbors[face][0])][2] = neighborsToSet[0][0]
-                self.cube[self.order.index(self.neighbors[face][0])][1] = neighborsToSet[0][1]
-                self.cube[self.order.index(self.neighbors[face][0])][0] = neighborsToSet[0][2]
+                self.cube[self.order.index(self.neighbors[face][0])][6] = neighborsToSet[0][0]
+                self.cube[self.order.index(self.neighbors[face][0])][5] = neighborsToSet[0][1]
+                self.cube[self.order.index(self.neighbors[face][0])][4] = neighborsToSet[0][2]
 
                 self.cube[self.order.index(self.neighbors[face][1])][0] = neighborsToSet[1][0]
                 self.cube[self.order.index(self.neighbors[face][1])][7] = neighborsToSet[1][1]
