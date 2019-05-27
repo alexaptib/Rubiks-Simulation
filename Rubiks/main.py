@@ -1,4 +1,6 @@
 import cube
+import random
+import time
 
 rubiksCube = cube.Cube()
 rubiksCube.rotate("W2")
