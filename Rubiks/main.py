@@ -1,9 +1,7 @@
 import cube
 
 rubiksCube = cube.Cube()
-rubiksCube.rotate("W")
-rubiksCube.rotate("G")
-rubiksCube.rotate("G")
-rubiksCube.rotate("Y")
+rubiksCube.rotate("W2")
 rubiksCube.rotate("B")
+rubiksCube.rotate("R'")
 rubiksCube.printCube()
