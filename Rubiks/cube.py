@@ -29,8 +29,21 @@ class Cube:
             del self.cube[face][-1]
         
         elif move[1] ==  "'":
-            self.cube.
-
+            self.cube[face].append(self.cube[face][0])
+            self.cube[face].append(self.cube[face][1])
+            del self.cube[face][0]
+            del self.cube[face][0]
+        
+        elif move[1] == "2":
+            self.cube[face].append(self.cube[face][0])
+            self.cube[face].append(self.cube[face][1])
+            self.cube[face].append(self.cube[face][2])
+            self.cube[face].append(self.cube[face][3])
+            del self.cube[face][0]
+            del self.cube[face][0]
+            del self.cube[face][0]
+            del self.cube[face][0]
+            
         neighborsToSet = []
         if move[0] == "W":
             for neighbor in self.neighbors[face]:
