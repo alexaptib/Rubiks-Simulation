@@ -252,13 +252,23 @@ class Cube:
             self.cube[self.order.index(self.neighbors[face][3])][4] = neighborsToSet[3][0]
             self.cube[self.order.index(self.neighbors[face][3])][3] = neighborsToSet[3][1]
             self.cube[self.order.index(self.neighbors[face][3])][2] = neighborsToSet[3][2]
-
-
-        #elif move[1] == "2":
             
-        #elif move[1] == "'":
   
-
+    def scramble(self, moves):
+        i = 0
+        while i < moves:
+            scrFace = random.randint(0, 6)
+            scrDirection = random.randint(0, 3)
+            if scrDirection == 0:
+                scrDirection = ""
+            elif scrDirection == 1:
+                scrDirection = "'"
+            elif scrDirection == 2:
+                scrDirection = "2"
+            self.rotate(self.order[scrFace] + scrDirection)
+            i += 1
+    
+    
     def printCube(self):
         for face in self.cube:
             line = 0
